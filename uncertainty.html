@@ -11771,7 +11771,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Deep-NNs-with-Softmax-function">Deep NNs with Softmax function<a class="anchor-link" href="#Deep-NNs-with-Softmax-function">&#182;</a></h1>
+<h1 id="Neural-Networks-Trained-with-Softmax-Cross-Entropy-Loss">Neural Networks Trained with Softmax Cross Entropy Loss<a class="anchor-link" href="#Neural-Networks-Trained-with-Softmax-Cross-Entropy-Loss">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -11780,14 +11780,14 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The following lines of codes demonstrate how softmax based Deep Neural Nets fail when they encounter out-of-sample queries.</p>
+<p>The following lines of codes demonstrate how softmax based Deep Neural Networks fail when they encounter out-of-sample queries.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#import necessary libraries</span>
@@ -12478,8 +12478,7 @@ epoch 50 - 100%) training: 0.9887 (55.1349 - 2.0851) 	 testing: 0.9880 (56.2424 
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">draw_EDL_results</span><span class="p">(</span><span class="n">train_acc1</span><span class="p">,</span> <span class="n">train_ev_s</span><span class="p">,</span> <span class="n">train_ev_f</span><span class="p">,</span> <span class="n">test_acc1</span><span class="p">,</span> <span class="n">test_ev_s</span><span class="p">,</span> <span class="n">test_ev_f</span><span class="p">):</span> 
-    <span class="c1"># calculate uncertainty for training and testing </span>
-    <span class="c1"># data for correctly and misclassified samples</span>
+    <span class="c1"># calculate uncertainty for training and testing data for correctly and misclassified samples</span>
     <span class="n">train_u_succ</span> <span class="o">=</span> <span class="n">K</span> <span class="o">/</span> <span class="p">(</span><span class="n">K</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">train_ev_s</span><span class="p">))</span>
     <span class="n">train_u_fail</span> <span class="o">=</span> <span class="n">K</span> <span class="o">/</span> <span class="p">(</span><span class="n">K</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">train_ev_f</span><span class="p">))</span>
     <span class="n">test_u_succ</span>  <span class="o">=</span> <span class="n">K</span> <span class="o">/</span> <span class="p">(</span><span class="n">K</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">test_ev_s</span><span class="p">))</span>
@@ -13099,7 +13098,7 @@ epoch 50 - 100%) training: 0.9860 (18039.0078 - 3.9769) 	 testing: 0.9875 (20124
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[301]:</div>
+<div class="prompt input_prompt">In&nbsp;[317]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">im0</span> <span class="o">=</span>  <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
@@ -13150,10 +13149,10 @@ epoch 50 - 100%) training: 0.9860 (18039.0078 - 3.9769) 	 testing: 0.9875 (20124
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[302]:</div>
+<div class="prompt input_prompt">In&nbsp;[318]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">sess1</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">prob1</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X1</span><span class="p">:</span><span class="n">img27</span><span class="p">[</span><span class="kc">None</span><span class="p">,:],</span> <span class="n">keep_prob1</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">sess1</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">prob1</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X1</span><span class="p">:</span><span class="n">img</span><span class="p">[</span><span class="kc">None</span><span class="p">,:],</span> <span class="n">keep_prob1</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;softmax prob: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">p1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 
@@ -13188,10 +13187,10 @@ epoch 50 - 100%) training: 0.9860 (18039.0078 - 3.9769) 	 testing: 0.9875 (20124
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[295]:</div>
+<div class="prompt input_prompt">In&nbsp;[319]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">uncertainty2</span><span class="p">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">sess2</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">u</span><span class="p">,</span> <span class="n">prob2</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X2</span><span class="p">:</span><span class="n">img27</span><span class="p">[</span><span class="kc">None</span><span class="p">,:],</span> <span class="n">keep_prob2</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">uncertainty2</span><span class="p">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">sess2</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">u</span><span class="p">,</span> <span class="n">prob2</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X2</span><span class="p">:</span><span class="n">img</span><span class="p">[</span><span class="kc">None</span><span class="p">,:],</span> <span class="n">keep_prob2</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;uncertainty:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">uncertainty2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Drichlet mean: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">p2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
@@ -13228,10 +13227,10 @@ Drichlet mean:  [0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[296]:</div>
+<div class="prompt input_prompt">In&nbsp;[320]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">uncertainty3</span><span class="p">,</span> <span class="n">p3</span> <span class="o">=</span> <span class="n">sess3</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">u3</span><span class="p">,</span> <span class="n">prob3</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X3</span><span class="p">:</span><span class="n">img27</span><span class="p">[</span><span class="kc">None</span><span class="p">,:],</span> <span class="n">keep_prob3</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">uncertainty3</span><span class="p">,</span> <span class="n">p3</span> <span class="o">=</span> <span class="n">sess3</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">u3</span><span class="p">,</span> <span class="n">prob3</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X3</span><span class="p">:</span><span class="n">img</span><span class="p">[</span><span class="kc">None</span><span class="p">,:],</span> <span class="n">keep_prob3</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;uncertainty:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">uncertainty3</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Drichlet mean: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">p3</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
@@ -13268,10 +13267,10 @@ Drichlet mean:  [0.325 0.073 0.075 0.074 0.073 0.081 0.078 0.073 0.074 0.074]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[303]:</div>
+<div class="prompt input_prompt">In&nbsp;[321]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">uncertainty4</span><span class="p">,</span> <span class="n">p4</span> <span class="o">=</span> <span class="n">sess4</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">u4</span><span class="p">,</span> <span class="n">prob4</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X4</span><span class="p">:</span><span class="n">img27</span><span class="p">[</span><span class="kc">None</span><span class="p">,:],</span> <span class="n">keep_prob4</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">uncertainty4</span><span class="p">,</span> <span class="n">p4</span> <span class="o">=</span> <span class="n">sess4</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">u4</span><span class="p">,</span> <span class="n">prob4</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X4</span><span class="p">:</span><span class="n">img</span><span class="p">[</span><span class="kc">None</span><span class="p">,:],</span> <span class="n">keep_prob4</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;uncertainty:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">uncertainty4</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Drichlet mean: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">p4</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
