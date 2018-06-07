@@ -11787,7 +11787,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#import necessary libraries</span>
@@ -12085,12 +12085,12 @@ epoch 50 - 100%) training accuracy: 0.9949 	 testing accuracy: 0.9886
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[216]:</div>
+<div class="prompt input_prompt">In&nbsp;[322]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This method rotates an image counter-clockwise and classify it for different degress of rotation. </span>
 <span class="c1"># It plots the highest classification probability along with the class label for each rotation degree.</span>
-<span class="k">def</span> <span class="nf">rotating_image_classification</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">sess</span><span class="p">,</span> <span class="n">prob</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">keep_prob</span><span class="p">,</span> <span class="n">uncertainty</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">rotating_image_classification</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">sess</span><span class="p">,</span> <span class="n">prob</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">keep_prob</span><span class="p">,</span> <span class="n">uncertainty</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
     <span class="n">Mdeg</span> <span class="o">=</span> <span class="mi">180</span> 
     <span class="n">Ndeg</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Mdeg</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
     <span class="n">ldeg</span> <span class="o">=</span> <span class="p">[]</span>
@@ -12108,7 +12108,7 @@ epoch 50 - 100%) training accuracy: 0.9949 	 testing accuracy: 0.9886
         <span class="k">else</span><span class="p">:</span>
             <span class="n">p_pred_t</span><span class="p">,</span><span class="n">u</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">prob</span><span class="p">,</span><span class="n">uncertainty</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="n">feed_dict</span><span class="p">)</span>
             <span class="n">lu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-        <span class="n">scores</span> <span class="o">+=</span> <span class="n">p_pred_t</span> <span class="o">&gt;=</span> <span class="mf">0.5</span>
+        <span class="n">scores</span> <span class="o">+=</span> <span class="n">p_pred_t</span> <span class="o">&gt;=</span> <span class="n">threshold</span>
         <span class="n">ldeg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span> 
         <span class="n">lp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p_pred_t</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     
@@ -12144,7 +12144,7 @@ epoch 50 - 100%) training accuracy: 0.9949 	 testing accuracy: 0.9886
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[171]:</div>
+<div class="prompt input_prompt">In&nbsp;[323]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rotating_image_classification</span><span class="p">(</span><span class="n">digit_one</span><span class="p">,</span> <span class="n">sess1</span><span class="p">,</span> <span class="n">prob1</span><span class="p">,</span> <span class="n">X1</span><span class="p">,</span> <span class="n">keep_prob1</span><span class="p">)</span>
