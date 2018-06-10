@@ -11787,7 +11787,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[58]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#import necessary libraries</span>
@@ -12472,6 +12472,16 @@ epoch 50 - 100%) training: 0.9887 (55.1349 - 2.0851) 	 testing: 0.9880 (56.2424 
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The following function plots average total evidence and prediction uncertainty in addition to accuracy for the training and test sets. Let us note that uncertainty approaches to 1.0 as the total evidence approaches to 0.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[195]:</div>
@@ -12557,6 +12567,16 @@ epoch 50 - 100%) training: 0.9887 (55.1349 - 2.0851) 	 testing: 0.9880 (56.2424 
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The figure above indicates that the proposed approach generates much smaller amount of evidence for the misclassified samples than the correctly classified samples. The uncertainty of the misclassied samples are around 0.8, while it is around 0.1 for the correctly classifeid sampled, both for training and testing sets. This means that the neural network acknowledges its ignorance for the misclassified samples and provides certain predictions only for the correctly classified samples on the average.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -12810,6 +12830,16 @@ epoch 50 - 100%) training: 0.9858 (13994.8203 - 3.8285) 	 testing: 0.9854 (14965
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Similarly, the figure above indicates that the neural network generates much more evidence for the correctly classified samples. As a result, the neural network has a very low uncertainty (around zero)  for the correctly classified samples, while the uncertainty is very high (around 0.7) for the misclassified samples.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -13187,12 +13217,12 @@ epoch 50 - 100%) training: 0.9860 (18039.0078 - 3.9769) 	 testing: 0.9875 (20124
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[319]:</div>
+<div class="prompt input_prompt">In&nbsp;[324]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">uncertainty2</span><span class="p">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">sess2</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">u</span><span class="p">,</span> <span class="n">prob2</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X2</span><span class="p">:</span><span class="n">img</span><span class="p">[</span><span class="kc">None</span><span class="p">,:],</span> <span class="n">keep_prob2</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;uncertainty:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">uncertainty2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Drichlet mean: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">p2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dirichlet mean: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">p2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -13206,7 +13236,7 @@ epoch 50 - 100%) training: 0.9860 (18039.0078 - 3.9769) 	 testing: 0.9875 (20124
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>uncertainty: 1.0
-Drichlet mean:  [0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1]
+Dirichlet mean:  [0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1]
 </pre>
 </div>
 </div>
@@ -13227,12 +13257,12 @@ Drichlet mean:  [0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[320]:</div>
+<div class="prompt input_prompt">In&nbsp;[325]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">uncertainty3</span><span class="p">,</span> <span class="n">p3</span> <span class="o">=</span> <span class="n">sess3</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">u3</span><span class="p">,</span> <span class="n">prob3</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X3</span><span class="p">:</span><span class="n">img</span><span class="p">[</span><span class="kc">None</span><span class="p">,:],</span> <span class="n">keep_prob3</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;uncertainty:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">uncertainty3</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Drichlet mean: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">p3</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dirichlet mean: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">p3</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -13246,7 +13276,7 @@ Drichlet mean:  [0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1]
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>uncertainty: 0.73
-Drichlet mean:  [0.325 0.073 0.075 0.074 0.073 0.081 0.078 0.073 0.074 0.074]
+Dirichlet mean:  [0.325 0.073 0.075 0.074 0.073 0.081 0.078 0.073 0.074 0.074]
 </pre>
 </div>
 </div>
@@ -13267,12 +13297,12 @@ Drichlet mean:  [0.325 0.073 0.075 0.074 0.073 0.081 0.078 0.073 0.074 0.074]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[321]:</div>
+<div class="prompt input_prompt">In&nbsp;[326]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">uncertainty4</span><span class="p">,</span> <span class="n">p4</span> <span class="o">=</span> <span class="n">sess4</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">u4</span><span class="p">,</span> <span class="n">prob4</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X4</span><span class="p">:</span><span class="n">img</span><span class="p">[</span><span class="kc">None</span><span class="p">,:],</span> <span class="n">keep_prob4</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;uncertainty:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">uncertainty4</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Drichlet mean: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">p4</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dirichlet mean: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">p4</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -13286,7 +13316,7 @@ Drichlet mean:  [0.325 0.073 0.075 0.074 0.073 0.081 0.078 0.073 0.074 0.074]
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>uncertainty: 0.85
-Drichlet mean:  [0.184 0.085 0.085 0.085 0.085 0.097 0.123 0.085 0.087 0.085]
+Dirichlet mean:  [0.184 0.085 0.085 0.085 0.085 0.097 0.123 0.085 0.087 0.085]
 </pre>
 </div>
 </div>
@@ -13392,12 +13422,12 @@ Drichlet mean:  [0.184 0.085 0.085 0.085 0.085 0.097 0.123 0.085 0.087 0.085]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[312]:</div>
+<div class="prompt input_prompt">In&nbsp;[327]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">uncertainty2</span><span class="p">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">sess2</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">u</span><span class="p">,</span> <span class="n">prob2</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X2</span><span class="p">:</span><span class="n">img</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">keep_prob2</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;uncertainty:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">uncertainty2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Drichlet mean: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">p2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dirichlet mean: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">p2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -13411,7 +13441,7 @@ Drichlet mean:  [0.184 0.085 0.085 0.085 0.085 0.097 0.123 0.085 0.087 0.085]
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>uncertainty: 1.0
-Drichlet mean:  [0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1]
+Dirichlet mean:  [0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1]
 </pre>
 </div>
 </div>
@@ -13432,12 +13462,12 @@ Drichlet mean:  [0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[313]:</div>
+<div class="prompt input_prompt">In&nbsp;[328]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">uncertainty3</span><span class="p">,</span> <span class="n">p3</span> <span class="o">=</span> <span class="n">sess3</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">u3</span><span class="p">,</span> <span class="n">prob3</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X3</span><span class="p">:</span><span class="n">img</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">keep_prob3</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;uncertainty:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">uncertainty3</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Drichlet mean: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">p3</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dirichlet mean: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">p3</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -13450,8 +13480,8 @@ Drichlet mean:  [0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1]
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>uncertainty: 0.92
-Drichlet mean:  [0.092 0.094 0.143 0.12  0.092 0.092 0.092 0.093 0.092 0.092]
+<pre>uncertainty: 0.73
+Dirichlet mean:  [0.325 0.073 0.075 0.074 0.073 0.081 0.078 0.073 0.074 0.074]
 </pre>
 </div>
 </div>
@@ -13462,12 +13492,12 @@ Drichlet mean:  [0.092 0.094 0.143 0.12  0.092 0.092 0.092 0.093 0.092 0.092]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[314]:</div>
+<div class="prompt input_prompt">In&nbsp;[329]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">uncertainty4</span><span class="p">,</span> <span class="n">p4</span> <span class="o">=</span> <span class="n">sess4</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">u4</span><span class="p">,</span> <span class="n">prob4</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X4</span><span class="p">:</span><span class="n">img</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">keep_prob4</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;uncertainty:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">uncertainty4</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Drichlet mean: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">p4</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dirichlet mean: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">p4</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -13480,8 +13510,8 @@ Drichlet mean:  [0.092 0.094 0.143 0.12  0.092 0.092 0.092 0.093 0.092 0.092]
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>uncertainty: 0.93
-Drichlet mean:  [0.093 0.093 0.16  0.098 0.093 0.093 0.093 0.094 0.093 0.093]
+<pre>uncertainty: 0.85
+Dirichlet mean:  [0.184 0.085 0.085 0.085 0.085 0.097 0.123 0.085 0.087 0.085]
 </pre>
 </div>
 </div>
