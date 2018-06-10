@@ -11787,7 +11787,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#import necessary libraries</span>
@@ -11804,6 +11804,21 @@ div#notebook {
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/usr/lib64/python3.6/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -13337,7 +13352,7 @@ Dirichlet mean:  [0.184 0.085 0.085 0.085 0.085 0.097 0.123 0.085 0.087 0.085]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[310]:</div>
+<div class="prompt input_prompt">In&nbsp;[330]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">))</span>
@@ -13384,7 +13399,7 @@ Dirichlet mean:  [0.184 0.085 0.085 0.085 0.085 0.097 0.123 0.085 0.087 0.085]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[311]:</div>
+<div class="prompt input_prompt">In&nbsp;[331]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">sess1</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">prob1</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X1</span><span class="p">:</span><span class="n">img</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">keep_prob1</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
@@ -13422,7 +13437,7 @@ Dirichlet mean:  [0.184 0.085 0.085 0.085 0.085 0.097 0.123 0.085 0.087 0.085]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[327]:</div>
+<div class="prompt input_prompt">In&nbsp;[332]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">uncertainty2</span><span class="p">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">sess2</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">u</span><span class="p">,</span> <span class="n">prob2</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X2</span><span class="p">:</span><span class="n">img</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">keep_prob2</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
@@ -13455,14 +13470,14 @@ Dirichlet mean:  [0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1]
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The neural networks trained using the loss functions defined in Eq. 5 and Eq. 6 in the paper also associate very high uncertainty with their prediction, as shown below. The one using Eq. 5 predicts digit 0 with mean probability 0.325, while the one using Eq. 6 predicts digit 0 with probability 0.184 and digit 6 with probability 0.123. In both cases, the predictions are very uncertain; uncertainty values are 0.73 and 0.85, respectively.</p>
+<p>The neural networks, trained using the loss functions defined in Eq. 5 and Eq. 6 in the paper, also have very high uncertainty for their predictions. These networks assing small amount of evidence for the classification of the image as digit 2. However, they associate very high uncertainty with their misclassifications of the image.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[328]:</div>
+<div class="prompt input_prompt">In&nbsp;[333]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">uncertainty3</span><span class="p">,</span> <span class="n">p3</span> <span class="o">=</span> <span class="n">sess3</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">u3</span><span class="p">,</span> <span class="n">prob3</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X3</span><span class="p">:</span><span class="n">img</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">keep_prob3</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
@@ -13480,8 +13495,8 @@ Dirichlet mean:  [0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1]
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>uncertainty: 0.73
-Dirichlet mean:  [0.325 0.073 0.075 0.074 0.073 0.081 0.078 0.073 0.074 0.074]
+<pre>uncertainty: 0.92
+Dirichlet mean:  [0.092 0.094 0.143 0.12  0.092 0.092 0.092 0.093 0.092 0.092]
 </pre>
 </div>
 </div>
@@ -13492,7 +13507,7 @@ Dirichlet mean:  [0.325 0.073 0.075 0.074 0.073 0.081 0.078 0.073 0.074 0.074]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[329]:</div>
+<div class="prompt input_prompt">In&nbsp;[334]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">uncertainty4</span><span class="p">,</span> <span class="n">p4</span> <span class="o">=</span> <span class="n">sess4</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">u4</span><span class="p">,</span> <span class="n">prob4</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X4</span><span class="p">:</span><span class="n">img</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">keep_prob4</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
@@ -13510,8 +13525,8 @@ Dirichlet mean:  [0.325 0.073 0.075 0.074 0.073 0.081 0.078 0.073 0.074 0.074]
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>uncertainty: 0.85
-Dirichlet mean:  [0.184 0.085 0.085 0.085 0.085 0.097 0.123 0.085 0.087 0.085]
+<pre>uncertainty: 0.93
+Dirichlet mean:  [0.093 0.093 0.16  0.098 0.093 0.093 0.093 0.094 0.093 0.093]
 </pre>
 </div>
 </div>
