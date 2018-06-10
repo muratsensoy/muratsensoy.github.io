@@ -11787,7 +11787,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#import necessary libraries</span>
@@ -12573,7 +12573,7 @@ epoch 50 - 100%) training: 0.9887 (55.1349 - 2.0851) 	 testing: 0.9880 (56.2424 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The figure above indicates that the proposed approach generates much smaller amount of evidence for the misclassified samples than the correctly classified samples. The uncertainty of the misclassied samples are around 0.8, while it is around 0.1 for the correctly classifeid sampled, both for training and testing sets. This means that the neural network acknowledges its ignorance for the misclassified samples and provides certain predictions only for the correctly classified samples on the average.</p>
+<p>The figure above indicates that the proposed approach generates much smaller amount of evidence for the misclassified samples than the correctly classified ones. The uncertainty of the misclassified samples are around 0.8, while it is around 0.1 for the correctly classified ones, both for training and testing sets. This means that the neural network is very uncertain for the misclassified samples and provides certain predictions only for the correctly classified ones.</p>
 
 </div>
 </div>
@@ -12836,7 +12836,7 @@ epoch 50 - 100%) training: 0.9858 (13994.8203 - 3.8285) 	 testing: 0.9854 (14965
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Similarly, the figure above indicates that the neural network generates much more evidence for the correctly classified samples. As a result, the neural network has a very low uncertainty (around zero)  for the correctly classified samples, while the uncertainty is very high (around 0.7) for the misclassified samples.</p>
+<p>The figure above indicates that the neural network generates much more evidence for the correctly classified samples. As a result, it has a very low uncertainty (around zero) for the correctly classified samples, while the uncertainty is very high (around 0.7) for the misclassified samples.</p>
 
 </div>
 </div>
