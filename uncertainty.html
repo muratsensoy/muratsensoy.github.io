@@ -11908,7 +11908,7 @@ Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a LeNet network with softmax cross entropy loss function</span>
-<span class="k">def</span> <span class="nf">LeNet_softmax</span><span class="p">(</span><span class="n">lmb</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span> 
+<span class="k">def</span> <span class="nf">LeNet_softmax</span><span class="p">(</span><span class="n">lmb</span><span class="o">=</span><span class="mf">0.005</span><span class="p">):</span> 
     <span class="n">g</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
     <span class="k">with</span> <span class="n">g</span><span class="o">.</span><span class="n">as_default</span><span class="p">():</span>
         <span class="n">X</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span><span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
