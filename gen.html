@@ -12128,26 +12128,8 @@ rkJggg==
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">relu_evidence</span><span class="p">(</span><span class="n">logits</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">exp_evidence</span><span class="p">(</span><span class="n">logits</span><span class="p">):</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">exp_evidence</span><span class="p">(</span><span class="n">logits</span><span class="p">):</span> 
     <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">loss_EDL</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">digamma</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">loss_func</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">global_step</span><span class="p">,</span> <span class="n">annealing_step</span><span class="p">):</span> 
-        <span class="n">S</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keep_dims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
-        <span class="n">E</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">-</span> <span class="mi">1</span>
-    
-        <span class="n">A</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="o">-</span> <span class="n">func</span><span class="p">(</span><span class="n">alpha</span><span class="p">)),</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-    
-        <span class="n">annealing_coef</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">global_step</span><span class="o">/</span><span class="n">annealing_step</span><span class="p">,</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
-    
-        <span class="n">alp</span> <span class="o">=</span> <span class="n">E</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> 
-        <span class="n">B</span> <span class="o">=</span>  <span class="n">annealing_coef</span> <span class="o">*</span> <span class="n">KL</span><span class="p">(</span><span class="n">alp</span><span class="p">)</span>
-    
-        <span class="k">return</span> <span class="p">(</span><span class="n">A</span><span class="o">+</span><span class="n">B</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">loss_func</span>
 
 <span class="k">def</span> <span class="nf">KL</span><span class="p">(</span><span class="n">alpha</span><span class="p">):</span>
     <span class="n">K</span><span class="o">=</span><span class="n">alpha</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
@@ -12162,20 +12144,6 @@ rkJggg==
     
     <span class="n">kl</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">((</span><span class="n">alpha</span> <span class="o">-</span> <span class="n">beta</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">dg1</span><span class="o">-</span><span class="n">dg0</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">keep_dims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">+</span> <span class="n">lnB</span> <span class="o">+</span> <span class="n">lnB_uni</span>
     <span class="k">return</span> <span class="n">kl</span>
-
-<span class="k">def</span> <span class="nf">mse_loss</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">global_step</span><span class="p">,</span> <span class="n">annealing_step</span><span class="p">):</span> 
-    <span class="n">S</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keep_dims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
-    <span class="n">E</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">-</span> <span class="mi">1</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">/</span> <span class="n">S</span>
-    
-    <span class="n">A</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">((</span><span class="n">p</span><span class="o">-</span><span class="n">m</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keep_dims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
-    <span class="n">B</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="p">(</span><span class="n">S</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">S</span><span class="o">*</span><span class="n">S</span><span class="o">*</span><span class="p">(</span><span class="n">S</span><span class="o">+</span><span class="mi">1</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keep_dims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
-    
-    <span class="n">annealing_coef</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">global_step</span><span class="o">/</span><span class="n">annealing_step</span><span class="p">,</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
-    
-    <span class="n">alp</span> <span class="o">=</span> <span class="n">E</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> 
-    <span class="n">C</span> <span class="o">=</span>  <span class="n">annealing_coef</span> <span class="o">*</span> <span class="n">KL</span><span class="p">(</span><span class="n">alp</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">)</span> <span class="o">+</span> <span class="n">C</span>
 </pre></div>
 
 </div>
@@ -12435,8 +12403,8 @@ rkJggg==
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># train LeNet network with expected mean square error loss</span>
-<span class="k">def</span> <span class="nf">LeNet</span><span class="p">(</span><span class="n">logits2evidence</span><span class="o">=</span><span class="n">relu_evidence</span><span class="p">,</span><span class="n">loss_function</span><span class="o">=</span><span class="n">mse_loss</span><span class="p">,</span> <span class="n">lmb</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span><span class="n">K</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># train LeNet network</span>
+<span class="k">def</span> <span class="nf">LeNet</span><span class="p">(</span><span class="n">logits2evidence</span><span class="o">=</span><span class="n">exp_evidence</span><span class="p">,</span> <span class="n">lmb</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span><span class="n">K</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
     <span class="n">g</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
     <span class="k">with</span> <span class="n">g</span><span class="o">.</span><span class="n">as_default</span><span class="p">():</span>
         <span class="n">X</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span><span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
